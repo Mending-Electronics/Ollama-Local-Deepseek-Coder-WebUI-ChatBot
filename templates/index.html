@@ -1,239 +1,231 @@
 <!doctype html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Command Prompt Chatbot</title>
+        <title>Command Prompt Chatbot</title>
 
-    <link rel="icon" href="https://avatars.githubusercontent.com/u/126720078?v=4">
+        <link rel="icon" href="/static/favicon.png">
 
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css">
-    
-    <!-- Prism CSS for code highlighting -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism-themes/1.9.0/prism-lucario.min.css">
-
-    <!-- Bootstrap JS and Popper.js -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script> 
-    <script src="/static/js/lib/bootstrap.bundle.min.js"></script>
-    
-    <!-- Bootstrap Theme Toggle -->
-    <script src="/static/js/color-modes.js"></script>
-
-    <style>
-        .chat-bubble {
-            white-space: pre-wrap; /* Preserve whitespace and newlines */
-            max-width: 55rem;
-        }
-        .chat-bubble-user {
-            border-radius: 15px 0px 15px 15px; /* top-right, top-left, bottom-left, bottom-right */
-        }
-        .chat-bubble-bot {
-            border-radius: 0px 15px 15px 15px; /* top-right, top-left, bottom-left, bottom-right */
-        }
-        .alert-fixed {
-            position: fixed;
-            top: 1rem;
-            right: 1rem;
-            z-index: 1050;
-        }
-        .scrollable-div {
-            max-height: 75%; /* Set the maximum height for the div */
-            overflow-y: auto;  /* Add vertical scrollbar if content exceeds max height */
-            overflow-x: hidden;
-        }
-
-    </style>
-</head>
-<body>
-    
-
-
-
-    <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark" style=" z-index: 2050;">
-        <div class="container-fluid">
-            <div class="svg-logo filter-white d-inline-block align-text-top me-3" style="width: 60px;" alt="logo"></div>
-            <h5 class="text-body d-inline-block m-b-lg m-t-lg me-5 mt-1 pt-1 font-family-brand">
-            MENDING
-            <span class="text-primary-emphasis fs-5">ELECTRONICS</span>
-            </h5>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css">
         
-            <span class="navbar-toggler d-xl-none collapsed border-0" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            <p class="hamburger mt-2 pt-1 text-light">☰</p>
-            </span>
+        <!-- Prism CSS for code highlighting -->
+        <link rel="stylesheet" href="/static/css/prism-lucario.min.css">
 
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ms-md-auto">
-                    <li class="nav-item py-2 py-lg-1 col-12 col-lg-auto">
-                        <div class="vr d-none d-lg-flex h-100 mx-lg-2 text-white"></div>
-                        <hr class="d-lg-none my-2 text-white-50">
-                    </li>
-                    <li class="nav-item dropdown" data-bs-theme="light">
-                        <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="theme-menu" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static" aria-label="Toggle theme">
-                            <i class="bi bi-circle-half"></i>
-                            <span class="d-lg-none ms-2">Toggle theme</span>
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end">
-                            <li>
-                                <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
-                                    <i class="bi bi-sun-fill"></i><span class="ms-2">Light</span>
-                                </button>
-                            </li>
-                            <li>
-                                <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="true">
-                                    <i class="bi bi-moon-stars-fill"></i><span class="ms-2">Dark</span>
-                                </button>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
-      </nav>
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/static/css/chat-messenger.css">
+
+
+        <!-- Bootstrap JS and Popper.js -->
+        <script src="/static/js/lib/popper.min.js"></script>
+        <script src="/static/js/lib/bootstrap.bundle.min.js"></script>
+        
+        <!-- Bootstrap Theme Toggle -->
+        <script src="/static/js/color-modes.js"></script>
+    
+
+        <!-- CDNs -->
+        <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism-themes/1.9.0/prism-lucario.min.css"> -->
+        <!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>  -->
+        <!-- <script src="https://cdn.jsdelivr.net/npm/vue@3.2.37/dist/vue.global.js"></script> -->
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/prism.min.js"></script> -->
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/15.0.6/marked.min.js" integrity="sha512-rvRITpPeEKe4hV9M8XntuXX6nuohzqdR5O3W6nhjTLwkrx0ZgBQuaK4fv5DdOWzs2IaXsGt5h0+nyp9pEuoTXg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+
+
+    </head>
+    <body>
+        
 
 
 
+        <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark" style=" z-index: 2050;">
+            <div class="container-fluid">
+                <div class="svg-logo filter-white d-inline-block align-text-top me-3" style="width: 60px;" alt="logo"></div>
+                <h5 class="text-body d-inline-block m-b-lg m-t-lg me-5 mt-1 pt-1 font-family-brand">
+                MENDING
+                <span class="text-primary-emphasis fs-5">ELECTRONICS</span>
+                </h5>
+            
+                <span class="navbar-toggler d-xl-none collapsed border-0" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <p class="hamburger mt-2 pt-1 text-light">☰</p>
+                </span>
 
-
-    <div id="app">
-        <aside class="bg-primary w-25 vh-100 position-fixed">
-
-            <div class="bg-body border-bottom border-5 border-third">
-                <div class="d-flex justify-content-center align-items-center">
-                    <h5 class="ms-2 m-auto text-body mb-3 mt-3 font-family-brand">
-                        <span class="text-body fs-5 ">ChatBot</span>
-                        <span class="text-secondary-emphasis fs-5 ms-1">History</span>
-                    </h5>
-                </div>
-            </div>
-
-            <div class="h-100 scrollable-div">
-                <table class="table table-hover ">
-                    <thead class="table-light">
-                      <tr class="">
-                        <th scope="col">
-                            <i class="bi bi-clock-history text-secondary mx-2 fs-5"></i>
-                        </th>
-                        <th scope="col"></th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <!-- <tr class="table-body hover-zoom-in hover-shadow">
-                        <th scope="row">2025/01/31</th>
-                        <td>Write a sample of python script </td>
-                      </tr>
-                      <tr class="table-body hover-zoom-in hover-shadow">
-                        <th scope="row">2025/01/30</th>
-                        <td>Write a sample of json file</td>
-                      </tr> -->
-                    </tbody>
-                  </table>
-
-
-            </div>
-
-        </aside>
-
-       
-            <div class="m-auto text-center chat-container vh-100 w-75 position-fixed end-0" style="height:100%; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1)">
-                <div class="bg-body scrollable-div h-75 px-4" id="scrollableDiv"> 
-                    <div class="rounded-3 border-4 my-5 bg-light text-body py-2 border-start border-end border-primary font-family-main fs-6">
-                        <div class="text-primary fw-bolder">How can I assist you with your programming or computer science queries today?</div>
-                        <div class="text-secondary font-family-main-light-italic"> <i></i> Powered by {{IAmodel}}</div>
-                    </div>
-                    <div id="chat-history">
-                        <div v-for="message in messages" :key="message.id" @mouseover="showButton(message.id)" @mouseleave="hideButton(message.id)">
-                            <div class="mb-1 d-flex" :class="{ 'justify-content-end': message.user, 'justify-content-start': message.bot }">
-                                {% raw %}
-                                <div v-if="message.user" class="d-flex">
-                                    <div class="py-1 mt-4 chat-bubble-user bg-primary text-light text-end">
-                                        <div class="card-body py-1 px-3">
-                                            <div class="chat-bubble user">{{ message.content }}</div>
-                                        </div>
-                                    </div>
-                                    <div class="ms-1 bg-primary rounded-circle p-1 d-flex justify-content-center align-items-center" style="height: 38px; width: 38px;">
-                                        <i class="bi bi-person-fill text-light "></i>
-                                    </div>
-                                </div>
-                                <div v-else class="d-flex">
-                                    <div class="me-1 bg-third rounded-circle p-1" style="height: 38px; width: 38px;">
-                                        <div class="svg-logo-100 filter-white"></div>
-                                    </div>
-                                    <div class="py-1 mt-4 chat-bubble-bot bg-light text-dark text-start w-100">
-                                        <div class="card-body py-1 px-3">
-                                            <div class="chat-bubble bot" v-html="renderMessageContent(message.content)"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                {% endraw %}
-                            </div>
-                            <div class="mb-3 d-flex" :class="{ 'justify-content-end me-5': message.user, 'justify-content-start ms-5': message.bot }">
-                                <div style="height: 32px;">
-                                    <button type="button" class="btn btn-sm btn-outline-primary-emphasis d-block py-0" style="height: 32px;" :class="{ 'd-none': !message.showButton }" @click="copyToClipboard(message.content)">
-                                        <i class="bi bi-clipboard text-outline-primary-emphasis"></i>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-md-auto">
+                        <li class="nav-item py-2 py-lg-1 col-12 col-lg-auto">
+                            <div class="vr d-none d-lg-flex h-100 mx-lg-2 text-white"></div>
+                            <hr class="d-lg-none my-2 text-white-50">
+                        </li>
+                        <li class="nav-item dropdown" data-bs-theme="light">
+                            <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="theme-menu" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static" aria-label="Toggle theme">
+                                <i class="bi bi-circle-half"></i>
+                                <span class="d-lg-none ms-2">Toggle theme</span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li>
+                                    <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
+                                        <i class="bi bi-sun-fill"></i><span class="ms-2">Light</span>
                                     </button>
+                                </li>
+                                <li>
+                                    <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="true">
+                                        <i class="bi bi-moon-stars-fill"></i><span class="ms-2">Dark</span>
+                                    </button>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+
+
+
+
+        <div id="app">
+            <aside class="bg-primary w-25 vh-100 position-fixed">
+
+                <div class="bg-body border-bottom border-5 border-third">
+                    <div class="d-flex justify-content-center align-items-center">
+                        <h5 class="ms-2 m-auto text-body mb-3 mt-3 font-family-brand">
+                            <span class="text-body fs-5 ">ChatBot</span>
+                            <span class="text-secondary-emphasis fs-5 ms-1">History</span>
+                        </h5>
+                    </div>
+                </div>
+
+                <div class="h-100 scrollable-div">
+                    <table class="table table-hover ">
+                        <thead class="table-light">
+                        <tr class="">
+                            <th scope="col">
+                                <i class="bi bi-clock-history text-secondary mx-2 fs-5"></i>
+                            </th>
+                            <th scope="col"></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <!-- <tr class="table-body hover-zoom-in hover-shadow">
+                            <th scope="row">2025/01/31</th>
+                            <td>Write a sample of python script </td>
+                        </tr>
+                        <tr class="table-body hover-zoom-in hover-shadow">
+                            <th scope="row">2025/01/30</th>
+                            <td>Write a sample of json file</td>
+                        </tr> -->
+                        </tbody>
+                    </table>
+
+
+                </div>
+
+            </aside>
+
+        
+                <div class="m-auto text-center chat-container vh-100 w-75 position-fixed end-0" style="height:100%; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1)">
+                    <div class="bg-body scrollable-div h-75 px-4" id="scrollableDiv"> 
+                        <div class="rounded-3 border-4 my-5 bg-light text-body py-2 border-start border-end border-primary font-family-main fs-6">
+                            <div class="text-primary fw-bolder">How can I assist you with your programming or computer science queries today?</div>
+                            <div class="text-secondary font-family-main-light-italic"> <i></i> Powered by {{IAmodel}}</div>
+                        </div>
+                        <div id="chat-history">
+                            <div v-for="message in messages" :key="message.id" @mouseover="showButton(message.id)" @mouseleave="hideButton(message.id)">
+                                <div class="mb-1 d-flex" :class="{ 'justify-content-end': message.user, 'justify-content-start': message.bot }">
+                                    {% raw %}
+                                    <div v-if="message.user" class="d-flex">
+                                        <div class="py-1 mt-4 chat-bubble-user bg-primary text-light text-end">
+                                            <div class="card-body py-1 px-3">
+                                                <div class="chat-bubble user">{{ message.content }}</div>
+                                            </div>
+                                        </div>
+                                        <div class="ms-1 bg-primary rounded-circle p-1 d-flex justify-content-center align-items-center" style="height: 38px; width: 38px;">
+                                            <i class="bi bi-person-fill text-light "></i>
+                                        </div>
+                                    </div>
+                                    <div v-else class="d-flex">
+                                        <div class="me-1 bg-third rounded-circle p-1" style="height: 38px; width: 38px;">
+                                            <div class="svg-logo-100 filter-white"></div>
+                                        </div>
+                                        <div class="py-1 mt-4 chat-bubble-bot bg-light text-dark text-start w-100">
+                                            <div class="card-body py-1 px-3">
+                                                <div class="chat-bubble bot" v-html="renderMessageContent(message.content)"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% endraw %}
+                                </div>
+                                <div class="mb-3 d-flex" :class="{ 'justify-content-end me-5': message.user, 'justify-content-start ms-5': message.bot }">
+                                    <div style="height: 32px;">
+                                        <button type="button" class="btn btn-sm btn-outline-primary-emphasis d-block py-0" style="height: 32px;" :class="{ 'd-none': !message.showButton }" @click="copyToClipboard(message.content)">
+                                            <i class="bi bi-clipboard text-outline-primary-emphasis"></i>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div v-show="loading">
-                        <div class="d-flex">
-                            <div class="me-1 bg-secondary rounded-circle p-1" style="height: 38px; width: 38px;">
-                                <div class="svg-logo-100 filter-white"></div>
-                            </div>
-                            <div class="py-1 mt-4 chat-bubble-bot bg-light text-dark text-start">
-                                <div class="card-body py-1 px-3">
-                                    <div id="spinners" class="text-start">
-                                        <div class="spinner-grow spinner-grow-sm text-primary" role="status">
-                                            <span class="visually-hidden">Loading...</span>
-                                        </div>
-                                        <div class="spinner-grow spinner-grow-sm text-secondary mx-1" role="status">
-                                            <span class="visually-hidden">Loading...</span>
-                                        </div>
-                                        <div class="spinner-grow spinner-grow-sm text-dark" role="status">
-                                            <span class="visually-hidden">Loading...</span>
+                        <div v-show="loading">
+                            <div class="d-flex">
+                                <div class="me-1 bg-secondary rounded-circle p-1" style="height: 38px; width: 38px;">
+                                    <div class="svg-logo-100 filter-white"></div>
+                                </div>
+                                <div class="py-1 mt-4 chat-bubble-bot bg-light text-dark text-start">
+                                    <div class="card-body py-1 px-3">
+                                        <div id="spinners" class="text-start">
+                                            <div class="spinner-grow spinner-grow-sm text-primary" role="status">
+                                                <span class="visually-hidden">Loading...</span>
+                                            </div>
+                                            <div class="spinner-grow spinner-grow-sm text-secondary mx-1" role="status">
+                                                <span class="visually-hidden">Loading...</span>
+                                            </div>
+                                            <div class="spinner-grow spinner-grow-sm text-dark" role="status">
+                                                <span class="visually-hidden">Loading...</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <div class="h-25 px-4" style="height: 200px;">
+                        <form @submit.prevent="handleSubmit" class="mb-1">
+                            <div class="input-group py-3">
+                                <textarea type="text" class="form-control" v-model="userInput" placeholder="Enter Command" rows="3"></textarea>
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="bi bi-send-fill"></i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-                <div class="h-25 px-4" style="height: 200px;">
-                    <form @submit.prevent="handleSubmit" class="mb-1">
-                        <div class="input-group py-3">
-                            <textarea type="text" class="form-control" v-model="userInput" placeholder="Enter Command" rows="3"></textarea>
-                            <button type="submit" class="btn btn-primary">
-                                <i class="bi bi-send-fill"></i>
-                            </button>
-                        </div>
-                    </form>
+                {% raw %}
+                <div v-if="showAlertFlag" id="alert" class="alert alert-success alert-fixed py-2 mt-5" role="alert">
+                    {{ alertMessage }}
                 </div>
-            </div>
-            {% raw %}
-            <div v-if="showAlertFlag" id="alert" class="alert alert-success alert-fixed py-2 mt-5" role="alert">
-                {{ alertMessage }}
-            </div>
-            {% endraw %}
-    </div>
-        
-        
+                {% endraw %}
+        </div>
+            
+            
 
 
-    <!-- External / CDN JS -->
+        <!-- External / CDN JS -->
 
-    <!-- Marked.js for markdown parsing -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/15.0.6/marked.min.js" integrity="sha512-rvRITpPeEKe4hV9M8XntuXX6nuohzqdR5O3W6nhjTLwkrx0ZgBQuaK4fv5DdOWzs2IaXsGt5h0+nyp9pEuoTXg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <!-- Marked.js for markdown parsing -->
+        <script src="/static/js/lib/marked.min.js"></script>
 
-    <!-- Prism.js for syntax highlighting -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/prism.min.js"></script>
-    
-    <!-- Vue.js to create Web App -->
-    <script src="https://cdn.jsdelivr.net/npm/vue@3.2.37/dist/vue.global.js"></script>
-   
-    <!-- Vue.js App -->
-    <script src="/static/vue/app.vue"></script>
+        <!-- Prism.js for syntax highlighting -->
+        <script src="/static/js/lib/prism.min.js"></script>
+
+        <!-- Vue.js to create Web App -->
+        <script src="/static/js/lib/vue.global.js"></script>
+
+        <!-- Vue.js App -->
+        <script src="/static/vue/app.vue"></script>
+
+    </body>
+</html>
+
     
 

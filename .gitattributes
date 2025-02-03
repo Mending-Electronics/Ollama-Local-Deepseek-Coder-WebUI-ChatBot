@@ -1,0 +1,2 @@
+# Exclude minified JavaScript files from GitHub language statistics (JS Libraries / Framworks) 
+*.min.js linguist-vendored

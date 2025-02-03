@@ -1,3 +1,5 @@
 flask
 requests
 ollama
+pytest
+pytest-html

@@ -1,0 +1,21 @@
+.chat-bubble {
+    white-space: pre-wrap; /* Preserve whitespace and newlines */
+    max-width: 55rem;
+}
+.chat-bubble-user {
+    border-radius: 15px 0px 15px 15px; /* top-right, top-left, bottom-left, bottom-right */
+}
+.chat-bubble-bot {
+    border-radius: 0px 15px 15px 15px; /* top-right, top-left, bottom-left, bottom-right */
+}
+.alert-fixed {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 1050;
+}
+.scrollable-div {
+    max-height: 75%; /* Set the maximum height for the div */
+    overflow-y: auto;  /* Add vertical scrollbar if content exceeds max height */
+    overflow-x: hidden;
+}
