@@ -3,3 +3,4 @@ requests
 ollama
 pytest
 pytest-html
+pytest-mock
