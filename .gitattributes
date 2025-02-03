@@ -1,2 +1,4 @@
 # Exclude minified JavaScript files from GitHub language statistics (JS Libraries / Frameworks) 
 *.min.js linguist-vendored=true
+*.min.js linguist-generated=true
+
