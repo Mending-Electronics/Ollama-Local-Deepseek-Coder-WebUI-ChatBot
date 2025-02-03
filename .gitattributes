@@ -6,5 +6,9 @@ static/js/lib/*.min.js linguist-generated=true
 *.js linguist-vendored=true
 *.js linguist-generated=true
 
+# Exclude tests_report.html
+tests_report.html linguist-vendored=true
+tests_report.html linguist-generated=true
+
 
 
