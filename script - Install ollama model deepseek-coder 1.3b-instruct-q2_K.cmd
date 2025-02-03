@@ -1,1 +1,0 @@
-ollama run deepseek-coder:1.3b-instruct-q2_K

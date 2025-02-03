@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, jsonify
 import subprocess
 from ollama import chat
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='templates')
 
 global IAmodel
 IAmodel = "deepseek-coder:1.3b-instruct-q2_K"
