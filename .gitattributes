@@ -11,4 +11,5 @@ static/js/lib/*.min.js linguist-generated=true
 tests_report.html linguist-vendored=true
 tests_report.html linguist-generated=true
 
-
+# Désactive uniquement les fichiers HTML (templates Jinja)
+*.html linguist-detectable=false
